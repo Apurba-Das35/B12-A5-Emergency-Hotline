@@ -77,3 +77,40 @@ const clearHistoryBtn = document.getElementById("clear-history-btn");
 clearHistoryBtn.addEventListener("click", function(){
   callHistoryContaine.innerHTML = "";
 });
+
+
+
+
+
+
+
+
+
+// Copy count element (Navbar)
+const copyCountEl = document.getElementById("navbar-copy-count");
+let copyCount = parseInt(copyCountEl.textContent);
+
+// all Copy button select
+const copyButtons = document.querySelectorAll(".card .fa-copy");
+
+for (const copyBtn of copyButtons) {
+  copyBtn.closest("button").addEventListener("click", function() {
+    
+    // Hotline number select (same card)
+    const card = copyBtn.closest(".card");
+    const hotlineNumber = card.querySelector("h1").textContent;
+
+    // Clipboard copy
+    navigator.clipboard.writeText(hotlineNumber).then(() => {
+      // Copy successful alert
+      alert(`Hotline number ${hotlineNumber} copied to clipboard!`);
+
+      // Copy count increase
+      copyCount++;
+      copyCountEl.textContent = copyCount;
+    }).catch(err => {
+      alert("Failed to copy number");
+      console.error(err);
+    });
+  });
+}
