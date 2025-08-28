@@ -65,3 +65,15 @@ for (const card of cards) {
     callHistoryContainer.appendChild(historyItem);
   });
 }
+
+
+
+
+
+// call history clear
+const callHistoryContaine = document.getElementById("call-history");
+const clearHistoryBtn = document.getElementById("clear-history-btn");
+
+clearHistoryBtn.addEventListener("click", function(){
+  callHistoryContaine.innerHTML = "";
+});
